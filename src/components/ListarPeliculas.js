@@ -1,64 +1,17 @@
 import React,{useState,useEffect} from 'react'
 import Pelicula from '../components/Peliculas'
 
-export default function ListarPeliculas() {
+export default function ListarPeliculas(props) {
     const [peliculas,setPeliculas]=useState([]); 
-    
-    useEffect(() => {
-    const cargarDatos=()=>{
-        setPeliculas(Peliculas)
-    }
-    cargarDatos();
-    },[]);
 
-    const Peliculas=[
-        {
-            img:"https://www.cinecalidad.to/wp-content/uploads/2020/02/the-last-thing-he-wanted.jpg",
-            titulo:"Su último deseo (2020)"
-        },
-        {
-            img:"https://www.cinecalidad.to/wp-content/uploads/2020/02/the-last-thing-he-wanted.jpg",
-            titulo:"Su último deseo (2020)"
-        },
-        {
-            img:"https://www.cinecalidad.to/wp-content/uploads/2020/02/the-last-thing-he-wanted.jpg",
-            titulo:"Su último deseo (2020)"
-        },
-        {
-            img:"https://www.cinecalidad.to/wp-content/uploads/2020/02/the-last-thing-he-wanted.jpg",
-            titulo:"Su último deseo (2020)"
+    useEffect(() => {
+        const cargarDatos=async ()=>{
+                const res=await fetch('http://localhost:4000/getmovies');
+                const respuesta=await res.json();
+                setPeliculas(respuesta);   
         }
-        ,
-        {
-            img:"https://www.cinecalidad.to/wp-content/uploads/2020/02/the-last-thing-he-wanted.jpg",
-            titulo:"Su último deseo (2020)"
-        }
-        ,
-        {
-            img:"https://www.cinecalidad.to/wp-content/uploads/2020/02/the-last-thing-he-wanted.jpg",
-            titulo:"Su último deseo (2020)"
-        }
-        ,
-        {
-            img:"https://www.cinecalidad.to/wp-content/uploads/2020/02/the-last-thing-he-wanted.jpg",
-            titulo:"Su último deseo (2020)"
-        }
-        ,
-        {
-            img:"https://www.cinecalidad.to/wp-content/uploads/2020/02/the-last-thing-he-wanted.jpg",
-            titulo:"Su último deseo (2020)"
-        }
-        ,
-        {
-            img:"https://www.cinecalidad.to/wp-content/uploads/2020/02/the-last-thing-he-wanted.jpg",
-            titulo:"Su último deseo (2020)"
-        }
-        ,
-        {
-            img:"https://www.cinecalidad.to/wp-content/uploads/2020/02/the-last-thing-he-wanted.jpg",
-            titulo:"Su último deseo (2020)"
-        }
-    ];
+        cargarDatos();
+    },[]);
 
     return (
             <div className="col-xl-8" style={{padding:"0 0 0 10px"}}>
@@ -66,7 +19,7 @@ export default function ListarPeliculas() {
                     {
                         peliculas.map(pelis=>{
                             return(
-                                <Pelicula tamaño="10rem" class="card m-2" img={pelis.img} titulo={pelis.titulo}/>
+                                <Pelicula key={pelis._id} tamaño="10rem" class="card m-2" id={pelis._id} titulo={pelis.name} img={pelis.image}/>
                             )
                         })
                     }

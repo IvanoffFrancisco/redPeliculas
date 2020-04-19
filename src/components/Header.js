@@ -12,7 +12,7 @@ export default function Header() {
                         </Link>
                     </div>
                     <div>
-                        <h1 style={{color:"white"}}>
+                        <h1 >
                             Red Peliculas
                         </h1>
                     </div>

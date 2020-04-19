@@ -7,7 +7,8 @@ export default function Nav() {
                 <button type="button" className="btn btn-secondary">Comedia</button>
                 <button type="button" className="btn btn-secondary">Terror</button>
                 <button type="button" className="btn btn-secondary">Ciencia Ficción</button>
-                <button type="button" className="btn btn-secondary">Estrenos</button>
+                <button type="button" className="btn btn-secondary">romance</button>
+                <button type="button" className="btn btn-secondary">fantasia</button>
             </div>
         </div>
     )
